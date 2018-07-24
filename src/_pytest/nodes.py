@@ -345,10 +345,11 @@ class FSCollector(Collector):
             name = name.replace(os.sep, SEP)
         self.fspath = fspath
 
+        config = config or parent.config
         session = session or parent.session
 
         if nodeid is None:
-            nodeid = self.fspath.relto(session.config.rootdir)
+            nodeid = self.fspath.relto(config.rootdir)
 
             if not nodeid:
                 nodeid = _check_initialpaths_for_relpath(session, fspath)
